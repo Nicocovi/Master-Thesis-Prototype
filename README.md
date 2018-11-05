@@ -16,7 +16,7 @@ In the solution, this integration is achieved by a central service registry whic
 
 ### High level architecture:
 
-TODO
+![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.png)
 
 * Repositories:
   * Pivio server: [link](https://github.com/Nicocovi/pivio-server)
@@ -25,9 +25,15 @@ TODO
   * Microservice 1: [link](https://github.com/Nicocovi/Microservice1)
   * Microservice 2: [link](https://github.com/Nicocovi/Microservice2)
 * Technologies (Docker container):
-  * Kibana
+  * ElasticSearch : [link](https://www.elastic.co/)
+  * SpringBoot: [link](https://spring.io/projects/spring-boot)
+  * Prometheus: [link](https://prometheus.io)
+  * Kibana: [link](https://www.elastic.co/products/kibana)
+  * D3.js: [link](https://d3js.org/)
+  * Thymeleaf: [link](https://www.thymeleaf.org/)
 * Tools:
-  * Iteraplan (EA Tool)
+  * Jenkins: [link](https://jenkins.io/)
+  * Iteraplan (EA Tool): [link](https://www.iteraplan.de/en/)
 * Cloud:
   * Pivotal CloudFoundry: [link](https://www.cloudfoundry.org/)
 
