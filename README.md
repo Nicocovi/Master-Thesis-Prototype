@@ -14,17 +14,23 @@ This thesis will focus on how information on the cloud infrastructure can be sea
 
 In the solution, this integration is achieved by a central service registry which receives updates from various sources and pushes new verified information to the EAM Tool used in the company. For the central registry an open source project will be used: Pivio (link). The project was adapted/extended with the requirements of the environment.
 
-
-
 High level architecture:
+
+TODO
 
 Process description:
 
+![Process](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/process.png)
+
+TODO: describe steps
+
 Component diagram:
+
+TODO
 
 Deployment diagram:
 
-
+TODO
 
 
 
