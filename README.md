@@ -14,21 +14,34 @@ This thesis will focus on how information on the cloud infrastructure can be sea
 
 In the solution, this integration is achieved by a central service registry which receives updates from various sources and pushes new verified information to the EAM Tool used in the company. For the central registry an open source project will be used: Pivio (link). The project was adapted/extended with the requirements of the environment.
 
-High level architecture:
+### High level architecture:
 
 TODO
 
-Process description:
+* Repositories:
+  * Pivio server: ![Server](https://github.com/Nicocovi/pivio-server)
+  * Pivio web: ![Web](https://github.com/Nicocovi/pivio-web)
+  * Jenkins Crawler: ![Crawler](https://github.com/Nicocovi/CF-Crawler)
+  * Microservice 1: ![MS1](https://github.com/Nicocovi/Microservice1)
+  * Microservice 2: ![MS2](https://github.com/Nicocovi/Microservice2)
+* Technologies (Docker container):
+  * Kibana
+* Tools:
+  * Iteraplan (EA Tool)
+* Cloud:
+  * Pivotal CloudFoundry ![CF](https://www.cloudfoundry.org/)
+
+### Process description:
 
 ![Process](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/process.png)
 
 TODO: describe steps
 
-Component diagram:
+### Component diagram:
 
 TODO
 
-Deployment diagram:
+### Deployment diagram:
 
 TODO
 
