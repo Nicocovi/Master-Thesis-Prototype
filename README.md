@@ -12,7 +12,7 @@ Current research endeavours lack in integrating cloud aspects (PaaS and SaaS) fo
 
 This thesis will focus on how information on the cloud infrastructure can be seamlessly integrated into an EA view from an application development pipeline and the business domains can be assigned automatically.
 
-In the solution, this integration is achieved by a central service registry which receives updates from various sources and pushes new verified information to the EAM Tool used in the company. For the central registry an open source project will be used: Pivio (link). The project was adapted/extended with the requirements of the environment.
+In the solution, this integration is achieved by a central service registry which receives updates from various sources and pushes new verified information to the EAM Tool used in the company. For the central registry an open source project will be used: [Pivio](http://pivio.io/). The project was adapted/extended with the requirements of the environment.
 
 ### High level architecture:
 
