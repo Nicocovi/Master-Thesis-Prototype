@@ -19,17 +19,17 @@ In the solution, this integration is achieved by a central service registry whic
 TODO
 
 * Repositories:
-  * Pivio server: ![Server](https://github.com/Nicocovi/pivio-server)
-  * Pivio web: ![Web](https://github.com/Nicocovi/pivio-web)
-  * Jenkins Crawler: ![Crawler](https://github.com/Nicocovi/CF-Crawler)
-  * Microservice 1: ![MS1](https://github.com/Nicocovi/Microservice1)
-  * Microservice 2: ![MS2](https://github.com/Nicocovi/Microservice2)
+  * Pivio server: [link](https://github.com/Nicocovi/pivio-server)
+  * Pivio web: [link](https://github.com/Nicocovi/pivio-web)
+  * Jenkins Crawler: [link](https://github.com/Nicocovi/CF-Crawler)
+  * Microservice 1: [link](https://github.com/Nicocovi/Microservice1)
+  * Microservice 2: [link](https://github.com/Nicocovi/Microservice2)
 * Technologies (Docker container):
   * Kibana
 * Tools:
   * Iteraplan (EA Tool)
 * Cloud:
-  * Pivotal CloudFoundry ![CF](https://www.cloudfoundry.org/)
+  * Pivotal CloudFoundry: [link](https://www.cloudfoundry.org/)
 
 ### Process description:
 
