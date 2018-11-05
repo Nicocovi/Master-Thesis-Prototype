@@ -16,7 +16,7 @@ In the solution, this integration is achieved by a central service registry whic
 
 ### High level architecture:
 
-![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.png)
+![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.PNG)
 
 * Repositories:
   * Pivio server: [link](https://github.com/Nicocovi/pivio-server)
