@@ -53,5 +53,10 @@ TODO
 
 ## Installation
 
-TODO
+1. Download [Pivio Server]()
+ 1.1 Open Docker
+ 1.2 Navigate to the repository and start the containers
+ ''
+ docker-compose up
+ ''
 
