@@ -53,6 +53,8 @@ TODO
 
 ## Installation
 
+If you dont want to run docker containers locally and do not have a Jira and CloudFoundry account, you can just download th VM and test the process. [Download link]()
+
 ### Start Server
 1. Download [Pivio Server Repository](https://github.com/Nicocovi/pivio-server)
 2. Open the directory of the repository and build Server
@@ -74,7 +76,19 @@ TODO
  ```
  cat initialAdminPassword
  ```
-8. Open Jira: docker-ip:8099 and setup Jira
+8. Setup Jira: docker-ip:8099. This might take a while.
  
 ### Start Pivio Web
+1. Download [Pivio Web Repository](https://github.com/Nicocovi/pivio-web)
+2. Open the directory of the repository and build pivio web
+```
+gradle build
+```
+3. Start web
+```
+java -jar build/libs/view.jar -f service_config.yaml
+```
 
+### Configure Jenkins Job
+
+TODO
