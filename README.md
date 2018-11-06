@@ -53,11 +53,28 @@ TODO
 
 ## Installation
 
-1. Download [Pivio Server]()
- 1. Open Docker
- 2. Navigate to the repository and start the containers
+### Start Server
+1. Download [Pivio Server Repository](https://github.com/Nicocovi/pivio-server)
+2. Open the directory of the repository and build Server
+ ```
+ gradle build -x test
+ ```
+3. Open Docker
+4. Navigate to the repository and start the containers
  ```
  docker-compose up
  ```
- 3. Open docker ip with the port of Jenkins (8008)
+5. Open docker ip with the port of Jenkins (8008)
+6. Navigate to initialAdminPassword-file to setup Jenkins
+ ```
+ docker ps
+ docker exec -t -i containername /bin/bash
+ ```
+7. navigate to initialAdminPassword directory: /var/jenkins_home/secrets
+ ```
+ cat initialAdminPassword
+ ```
+8. Open Jira: docker-ip:8099 and setup Jira
+ 
+### Start Pivio Web
 
