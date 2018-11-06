@@ -54,9 +54,10 @@ TODO
 ## Installation
 
 1. Download [Pivio Server]()
- 1.1 Open Docker
- 1.2 Navigate to the repository and start the containers
- ''
+ 1. Open Docker
+ 2. Navigate to the repository and start the containers
+ ```
  docker-compose up
- ''
+ ```
+ 3. Open docker ip with the port of Jenkins (8008)
 
