@@ -87,7 +87,7 @@ gradle build
 ```
 3. Start web
 ```
-java -jar build/libs/view.jar -f service_config.yaml
+java -jar build/libs/view.jar -f pivio-conf/server_config.yaml
 ```
 
 ### Configure Jenkins Job
