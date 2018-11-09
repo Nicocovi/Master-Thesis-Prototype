@@ -66,7 +66,7 @@ If you dont want to run docker containers locally and do not have a Jira and Clo
  ```
  docker-compose up
  ```
-5. Open docker ip with the port of Jenkins (8008)
+5. Open docker-ip with the port of Jenkins (8008)
 6. Navigate to initialAdminPassword-file to setup Jenkins
  ```
  docker ps
@@ -76,8 +76,9 @@ If you dont want to run docker containers locally and do not have a Jira and Clo
  ```
  cat initialAdminPassword
  ```
+ <!--
 8. Setup Jira: docker-ip:8099. This might take a while.
- 
+ -->
 ### Start Pivio Web
 1. Download [Pivio Web Repository](https://github.com/Nicocovi/pivio-web)
 2. Open the directory of the repository and build pivio web
