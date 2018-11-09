@@ -98,6 +98,15 @@ java -jar build/libs/view.jar -f pivio-conf/server_config.yaml
    Post each json with Postman POST to pivio-server/document.
    Dont forget to set the header to: application/json
 
+### Cloud environment
+All 3 components are running in a cloud-based environment: [CloudFoundry]()
+Pivio web is running [here](https://pivio-web.cfapps.io/)
+Pivio server is running [here](https://pivio-server.cfapps.io/)
+Elasticsearch is running [here](https://pivio-elastic.cfapps.io/)
+
+To enable Pivio to run in a cloud-environment the following configurations had to be done:
+
+TODO
 <!--
 ### Configure Jenkins Job
 
