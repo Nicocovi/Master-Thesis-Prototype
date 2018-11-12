@@ -93,7 +93,7 @@ java -jar build/libs/view.jar -f pivio-conf/server_config.yaml
 ### Push initial data
 
 1. Download [Postman](https://www.getpostman.com/)
-2. Download [Data file]()
+2. Download [Data file](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/document.json)
 3. The Data file is an array of jsons. 
    Post each json with Postman POST to pivio-server/document.
    Dont forget to set the header to: application/json
