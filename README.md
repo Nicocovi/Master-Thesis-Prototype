@@ -82,6 +82,15 @@ Once the service was successfully deployed to the cloud the runtime information 
 During the pipeline the collected information of the individual stages are put in the same json. 
 As shown in the above picture the json contains the information of the configuration file, the business-specific information and the runtime information. This json is pushed to the tool with a simple HTTP-POST-Method.
 
+#### Crawler Job:
+The crawler jobs updated the runtime information. The crawler job is divided in four stages:
+1. Get Pivio-Apps: In this stage the job first retrieves a list of all services listed in the pivio-tool.
+2. Get Apps-List: In this stage the job gets a list of the services that are hosted in the specified organization and space of the platform. This services can be either runnning, stopped or crashed. Independently of the status of the service the platform api endpoint will return a complete list of the services.
+3. Get individual Runtime Info: Subsequently getting the list of all services of the predefined organization and space of the platform, this stage collects the individual runtime information. This stage iterates through the list to retrieve the information of the platform. The runtime information contains the atributes as the stage described in "Get Runtime Information". This is the most time consuming stage of the crawler job since the job has to retrieve the individual runtime information for each service.
+4. Push Documentation: Ultimately the retrieved informaiton of the individual services is pushed to the tool pivio to update the information of the already documented services to ensure an uptodate documentation.
+
+The job is scheduled time-based. In the jenkins instance the crawler job is performed every 15 minutes.
+
 ### Component diagram:
 
 TODO
