@@ -59,15 +59,20 @@ The stage "Get jira information" collects the business specific information. As 
 and a product during the pipeline. This stage is the innovative part of the documentation process. Disabling the deployment of a service to the cloud before having the business-specific information of the service ensures that the EA information at the end is consistent. 
 
 #### Build:
-TODO
+Since the build stage together with the deployment stage are one of the most time consuming stages the build and deployment stages where defined after collection the business-specific information. As mentioned before collecting the business information during the documentation process takes less time than the build and deployment stage. To establish high quality of the EA information the pipeline fails.
+The build-stage buils the downloaded code of the version control service with the commands defined in this stage. Depending on the size  of the repository this stage may take some time. 
 
 #### Deploy:
-TODO
+The deployment stage is also one of the most time consuming stages during this proposed pipeline. For the demonstration of this documentation process CloudFoundry is used as a multi-cloud application platform.
+This stage first connects to the cloud api endpoint with the credentials stored in the continuous delivery tool (jenkins). After authenticating, the defined organisation and space of CloudFoundry is selected.
+The service is then pushed to the platform. If a manifest-yaml-file is defined, the specified information of that file are used fot the cloud configuration. After the command for pushing, the platform downloads the buildpacks and dependencies of the service being pushed.
+The platform returns a message with the status of that the service. This means if the service was successfully or unsuccessfully deployed.
 
 #### Get Runtime Information:
 TODO
 
 #### Push Documentation: 
+TODO
 
 ### Component diagram:
 
