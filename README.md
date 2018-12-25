@@ -43,11 +43,36 @@ In the solution, this integration is achieved by a central service registry whic
 
 TODO: describe steps
 
+The groovy-pipeline shown in the picture above is divided into the following stages:
+
+#### Get sources:
+This stage gets the latest code of the version control service. In this case the web-based hosting service for version control Github-Enterprise is used.
+
+#### Validate configuration:
+To enable the retrievement of the business specific information and to enable the federated approach of the EA documentation, the configuration file has to be validated. The configuration file contains the links to other tools such a link to the PPM (Jira), a link to the CMDB, a link to the wiki, etc. The developers need to manually maintain and update the configuration file. 
+
+If the configutation file exists in the repository and it contains a link to the PPM tool in this case Jira the pipeline does not fail. Otherwise the pipeline fails to disable the inconsistent documentation regarding the business specific information.
+
+#### Get Jira information:
+TODO
+
+#### Build:
+TODO
+
+#### Deploy:
+TODO
+
+#### Get Runtime Information:
+TODO
+
+#### Push Documentation: 
+
 ### Component diagram:
 
 TODO
 
 ### Deployment diagram:
+TODO
 
 TODO
 
