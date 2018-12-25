@@ -41,9 +41,10 @@ In the solution, this integration is achieved by a central service registry whic
 
 ![Process](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/process.png)
 
-TODO: describe steps
-
-The groovy-pipeline shown in the picture above is divided into the following stages:
+To retrieve EA relevant information for a service running on a cloud-based environment the information is retrieved already during the application development pipeline and continiuous integration tool. The EA relevant information collection process within the continuous integration tool is divided into two jobs. 
+The first job is the job itself in jenkins to build and deploy the service into the cloud. 
+The second job is the crawler job which runs every certain time collecting the cloud and runtime information of the service.
+To enable the first job a groovy script has to be included into the repository of the version control service. The groovy-script describes the pipeline. The pipeline shown in the picture above is divided into the following stages:
 
 #### Get sources:
 This stage gets the latest code of the version control service. In this case the web-based hosting service for version control Github-Enterprise is used.
@@ -54,7 +55,8 @@ To enable the retrievement of the business specific information and to enable th
 If the configutation file exists in the repository and it contains a link to the PPM tool in this case Jira the pipeline does not fail. Otherwise the pipeline fails to disable the inconsistent documentation regarding the business specific information.
 
 #### Get Jira information:
-TODO
+The stage "Get jira information" collects the business specific information. As shown in the picture above this stage retrieves the domain, subdomain, owner, product and description information from jira. Therefore every service can be aligned to a domain, subdomain
+and a product during the pipeline. This stage is the innovative part of the documentation process. Disabling the deployment of a service to the cloud before having the business-specific information of the service ensures that the EA information at the end is consistent. 
 
 #### Build:
 TODO
