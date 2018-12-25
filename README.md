@@ -65,22 +65,28 @@ The build-stage buils the downloaded code of the version control service with th
 #### Deploy:
 The deployment stage is also one of the most time consuming stages during this proposed pipeline. For the demonstration of this documentation process CloudFoundry is used as a multi-cloud application platform.
 This stage first connects to the cloud api endpoint with the credentials stored in the continuous delivery tool (jenkins). After authenticating, the defined organisation and space of CloudFoundry is selected.
-The service is then pushed to the platform. If a manifest-yaml-file is defined, the specified information of that file are used fot the cloud configuration. After the command for pushing, the platform downloads the buildpacks and dependencies of the service being pushed.
+The service is then pushed to the platform. If a manifest-yaml-file is defined, the specified information of that file are used fot the cloud configuration. After the command for pushing, the platform downloads the buildpacks and software dependencies of the service being pushed.
 The platform returns a message with the status of that the service. This means if the service was successfully or unsuccessfully deployed.
 
 #### Get Runtime Information:
-TODO
+Once the service was successfully deployed to the cloud the runtime information is retrieved. The information collected in this stage contains the following attributes:
+- Status of the services: is the service down or is the service running?
+- How many instances of this services are running on the cloud?
+- How much RAM does the service need of the predefined resources?
+- How much CPU does the service consume?
+- How much Disk of the predefined resouces does the service expend?
+- What buildpacks or software dependendies does the service require?
+- What services does the deployed service communicate with?
 
 #### Push Documentation: 
-TODO
+During the pipeline the collected information of the individual stages are put in the same json. 
+As shown in the above picture the json contains the information of the configuration file, the business-specific information and the runtime information. This json is pushed to the tool with a simple HTTP-POST-Method.
 
 ### Component diagram:
 
 TODO
 
 ### Deployment diagram:
-TODO
-
 TODO
 
 ## Installation
