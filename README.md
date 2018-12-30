@@ -24,6 +24,7 @@ In the solution, this integration is achieved by a central service registry whic
   * Jenkins Crawler: [link](https://github.com/Nicocovi/CF-Crawler)
   * Microservice 1: [link](https://github.com/Nicocovi/Microservice1)
   * Microservice 2: [link](https://github.com/Nicocovi/Microservice2)
+  * Architecture Belt: [link]()
 * Technologies (Docker container):
   * ElasticSearch : [link](https://www.elastic.co/)
   * SpringBoot: [link](https://spring.io/projects/spring-boot)
@@ -31,9 +32,12 @@ In the solution, this integration is achieved by a central service registry whic
   * Kibana: [link](https://www.elastic.co/products/kibana)
   * D3.js: [link](https://d3js.org/)
   * Thymeleaf: [link](https://www.thymeleaf.org/)
+  * Angular: [link]()
+  * Typescript: [link]()
 * Tools:
   * Jenkins: [link](https://jenkins.io/)
   * Iteraplan (EA Tool): [link](https://www.iteraplan.de/en/)
+  * Sonarqube: [link]()
 * Cloud:
   * Pivotal CloudFoundry: [link](https://www.cloudfoundry.org/)
 
