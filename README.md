@@ -20,10 +20,10 @@ Enterprise Architecture Management, automated Enterprise Architecture Documentat
 
 ## High level architecture:
 
-
+![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/xxx.PNG)
 
 * Repositories:
-  * Tool server: [link](https://github.com/Nicocovi/pivio-server)
+  * Tool server: [link](https://github.com/Nicocovi/pivio-mongodb-server)
   * Tool web: [link](https://github.com/Nicocovi/pivio-web)
   * Jenkins Crawler: [link](https://github.com/Nicocovi/CF-Crawler)
   * Microservice 1: [link](https://github.com/Nicocovi/Microservice1)
