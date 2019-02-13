@@ -20,7 +20,7 @@ Enterprise Architecture Management, automated Enterprise Architecture Documentat
 
 ## High level architecture:
 
-![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/xxx.PNG)
+![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/eadtool.PNG)
 
 * Repositories:
   * Tool server: [link](https://github.com/Nicocovi/pivio-mongodb-server)
