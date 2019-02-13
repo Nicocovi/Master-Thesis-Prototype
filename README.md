@@ -2,25 +2,29 @@
 Automated documentation of Business Domain assignments and cloud application information from an application development pipeline
 
 ## Introduction
-Major technology trends that have an impact on EAM:
 
-1. Agile development and continuous delivery (CD) approaches are becoming more important in todays enterprises. CD leads to short lifecycles which implies a quicker update of the EA Tool information
-2. Cloud migration reduces infrastructure and maintenance costs. Cloud reduces transparency and increases complexity of EA documentation
-3. Modularization of legacy systems into application components and microservices causes a higher number of applications
+Enterprise Architecture Management (EAM) has emerged to be a settled instrument to increase data quality, reduce IT costs and to reduce the error-prone effects of the process of the Enterprise Architecture information collection. Although EAM has gained importance over more than a decade to improve the alignment of business with IT and transmit a holistic view of the entire organization along with its application landscape, this discipline has been shown to be more complex than expected.
 
-Current research endeavours lack in integrating cloud aspects (PaaS and SaaS) for automated EA documentation. The aim of this research is the automatic integration of various runtime information sources into an EAM view because it results to a set of improved EAM use cases that can be derived from an automated EA documentation process.
+One of the major challenges for an organization is the documentation of Enterprise Architecture (EA) information. Most of the EA documentation is still collected manually. The high number of applications within the application landscape coupled with data
+redundancy and the inconsistent data leads to a high complexity of EA documentation. This produces a time consuming and highly error-rated documentation and collection process of EA information. Maintaining and gathering information for the EA is (as
+well) a very expensive task. The lack of governance is also a major challenge for EA itself. The absence of standardized tools integration, continuous delivery and build pipelines, etc., adds to the complexity of a clear and transparent EA documentation.
 
-This thesis will focus on how information on the cloud infrastructure can be seamlessly integrated into an EA view from an application development pipeline and the business domains can be assigned automatically.
+Since one of the goals of EAM is to create a completely holistic view of the EA, it should integrate internal sources, such as PPM tool and external sources, such as cloud service providers.
 
-In the solution, this integration is achieved by a central service registry which receives updates from various sources and pushes new verified information to the EAM Tool used in the company. For the central registry an open source project will be used: [Pivio](http://pivio.io/). The project was adapted/extended with the requirements of the environment.
+This thesis will focus on the automated documentation of cloud applications information from an application development pipeline, and the business domain assignments based on the hypothesis that the automated documentation of EA cloud applications leads to a reduction of IT costs and effort, while increasing the data quality of EA information and data.
 
-### High level architecture:
+In order to enhance a holistic view, the EA Tool can be enriched with dynamic data to enable a continuous process of monitoring application performance and infrastructure since the already available documented EA information is mostly static data coming from EA data sources.
+
+### Keywords:
+Enterprise Architecture Management, automated Enterprise Architecture Documentation, Business Domains, Application Development Pipeline, Cloud Application Information, Application Performance Monitoring
+
+## High level architecture:
 
 ![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.PNG)
 
 * Repositories:
-  * Pivio server: [link](https://github.com/Nicocovi/pivio-server)
-  * Pivio web: [link](https://github.com/Nicocovi/pivio-web)
+  * Tool server: [link](https://github.com/Nicocovi/pivio-server)
+  * Tool web: [link](https://github.com/Nicocovi/pivio-web)
   * Jenkins Crawler: [link](https://github.com/Nicocovi/CF-Crawler)
   * Microservice 1: [link](https://github.com/Nicocovi/Microservice1)
   * Microservice 2: [link](https://github.com/Nicocovi/Microservice2)
@@ -45,32 +49,30 @@ In the solution, this integration is achieved by a central service registry whic
 
 ![Process](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/process.png)
 
-To retrieve EA relevant information for a service running on a cloud-based environment the information is retrieved already during the application development pipeline and continiuous integration tool. The EA relevant information collection process within the continuous integration tool is divided into two jobs. 
-The first job is the job itself in jenkins to build and deploy the service into the cloud. 
-The second job is the crawler job which runs every certain time collecting the cloud and runtime information of the service.
-To enable the first job a groovy script has to be included into the repository of the version control service. The groovy-script describes the pipeline. The pipeline shown in the picture above is divided into the following stages:
+To retrieve EA relevant information for an application running on a cloud-based environment the information is retrieved already during the application development pipeline and continuous integration tool. The EA relevant information collection process within the continuous integration tool is divided into two jobs. The first job is illustrated in figure 4.5 as Groovy script. The second job is the crawler job which runs every certain time collecting the cloud and runtime information of the service. To enable the first job a groovy script has to be included into the repository of the version control service (requirement: pipeline script). The groovy-script represents the pipeline script. The pipeline shown in the picture above is divided into the following stages:
 
 #### Get sources:
-This stage gets the latest code of the version control service. In this case the web-based hosting service for version control Github-Enterprise is used.
+This stage gets the latest code of the version control service. In this case the web-based hosting service for version control Github is used. The CD/CI Tool Jenkis downloads the repository locally.
 
 #### Validate configuration:
-To enable the retrievement of the business specific information and to enable the federated approach of the EA documentation, the configuration file has to be validated. The configuration file contains the links to other tools such a link to the PPM (Jira), a link to the CMDB, a link to the wiki, etc. The developers need to manually maintain and update the configuration file. 
+To enable the retrievement of the business specific information and to enable the federated approach of the EA documentation, the configuration file has to be validated. The configuration file contains the links to other tools such a link to the PPM (Jira), a
+link to the CMDB, a link to the wiki, etc. The developers need to manually maintain and update the configuration file.
 
-If the configutation file exists in the repository and it contains a link to the PPM tool in this case Jira the pipeline does not fail. Otherwise the pipeline fails to disable the inconsistent documentation regarding the business specific information.
+If the configuration file exists in the repository and it contains a link to the PPM tool in this case Jira the pipeline does not fail. Otherwise the pipeline fails to disable the inconsistent documentation regarding the business specific information.
 
 #### Get Jira information:
-The stage "Get jira information" collects the business specific information. As shown in the picture above this stage retrieves the domain, subdomain, owner, product and description information from jira. Therefore every service can be aligned to a domain, subdomain
-and a product during the pipeline. This stage is the innovative part of the documentation process. Disabling the deployment of a service to the cloud before having the business-specific information of the service ensures that the EA information at the end is consistent. 
+The stage "Get jira information" collects the business specific information. The stage is divided into two small parts to gather the information.
+
+The first part makes a call to retrieve the information stored at the project level in jira. This information gets the project id, the project name, the project owner and the project description.
+
+The second part iterates through the issues assigned to the jira project. Every jira issue contains a standard field "component", which means to which child component of the parent application the issues is assigned to. Since jira does only allow to add customized fields at an issue level, each issue needs to contain the information of the domain, subdomain and product. To ensure the data quality attributes, the fields need to be mandatory when creating a new issue. The aggregated information of this part is stored at a global variable in the groovy script to be pushed at the documentation stage together with the information collected during the other stages.
+As shown in the picture above this stage aggregates information from jira to the information being documented. Therefore every deployed aritfact can be aligned to a domain, subdomain and a product during the pipeline. This stage is the innovative part of the documentation process. Disabling the deployment of a service to the cloud before having the business-specific information of the service ensures that the EA information is consistent and complete.
 
 #### Build:
-Since the build stage together with the deployment stage are one of the most time consuming stages the build and deployment stages where defined after collection the business-specific information. As mentioned before collecting the business information during the documentation process takes less time than the build and deployment stage. To establish high quality of the EA information the pipeline fails.
-The build-stage buils the downloaded code of the version control service with the commands defined in this stage. Depending on the size  of the repository this stage may take some time. 
+Since the build stage together with the deployment stage are one of the most time consuming stages, the build and deployment stages where defined after collecting the business-specific information. The reason for this is that a completeness of the documentation is ensured. The build-stage builds the downloaded code of the version control service with the commands defined in this stage. In this case Springboot applications were used to test the approach. Therefore Maven and/or Gradle commands were used to build the code. Depending on the size of the repository this stage may take some time.
 
 #### Deploy:
-The deployment stage is also one of the most time consuming stages during this proposed pipeline. For the demonstration of this documentation process CloudFoundry is used as a multi-cloud application platform.
-This stage first connects to the cloud api endpoint with the credentials stored in the continuous delivery tool (jenkins). After authenticating, the defined organisation and space of CloudFoundry is selected.
-The service is then pushed to the platform. If a manifest-yaml-file is defined, the specified information of that file are used fot the cloud configuration. After the command for pushing, the platform downloads the buildpacks and software dependencies of the service being pushed.
-The platform returns a message with the status of that the service. This means if the service was successfully or unsuccessfully deployed.
+The deployment stage is also one of the most time consuming stages during this proposed pipeline. For the demonstration of this documentation process CloudFoundry is used as a multi-cloud application platform. This stage first connects to the cloud API endpoint with the credentials stored in the continuous delivery tool (jenkins). After authenticating, the organization and space of CloudFoundry are selected. The artifact is then pushed to the platform. If a manifest-yaml-file is defined in the repository, the specified information of that file is used for the cloud configuration. After executing the push command automatically, the platform downloads the buildpacks and software dependencies of the pushed artifact. The platform returns a message with the status of that the artifact. This means if the artifact was successfully or unsuccessfully deployed.
 
 #### Get Runtime Information:
 Once the service was successfully deployed to the cloud the runtime information is retrieved. The information collected in this stage contains the following attributes:
@@ -82,64 +84,26 @@ Once the service was successfully deployed to the cloud the runtime information 
 - What buildpacks or software dependendies does the service require?
 - What services does the deployed service communicate with?
 
+The runtime information that can be gathered from the API may vary depending on the cloud infrastructure.
+
+
 #### Push Documentation: 
-During the pipeline the collected information of the individual stages are put in the same json. 
-As shown in the above picture the json contains the information of the configuration file, the business-specific information and the runtime information. This json is pushed to the tool with a simple HTTP-POST-Method.
+During the pipeline execution the collected information of the individual stages are put in the same global variable of the script. The export of this variable is formatted as a json. As shown in the above picture the json contains the information of the configuration file, the business-specific information and the runtime information. This json is pushed to the tool with a simple HTTP-POST-Method.
 
 #### Crawler Job:
-The crawler jobs updated the runtime information. The crawler job is divided in four stages:
-1. Get Pivio-Apps: In this stage the job first retrieves a list of all services listed in the pivio-tool.
-2. Get Apps-List: In this stage the job gets a list of the services that are hosted in the specified organization and space of the platform. This services can be either runnning, stopped or crashed. Independently of the status of the service the platform api endpoint will return a complete list of the services.
-3. Get individual Runtime Info: Subsequently getting the list of all services of the predefined organization and space of the platform, this stage collects the individual runtime information. This stage iterates through the list to retrieve the information of the platform. The runtime information contains the atributes as the stage described in "Get Runtime Information". This is the most time consuming stage of the crawler job since the job has to retrieve the individual runtime information for each service.
-4. Push Documentation: Ultimately the retrieved informaiton of the individual services is pushed to the tool pivio to update the information of the already documented services to ensure an uptodate documentation.
+To updated the EA relevant information retrieved during the process, a crawler was implemented in the continuous delivery tool. The job that triggers an information update is depicted as Cloud Crawler. The cloud crawler is a job in the CD tool that retrieves the runtime information of the cloud-based environment and updates the information in the tool. The crawler job is divided in four stages. The following figure shows the cloud crawler job.
 
-The job is scheduled time-based. In the jenkins instance the crawler job is performed every 15 minutes.
-
-### Component diagram:
-
-TODO
-
-### Deployment diagram:
-TODO
+1. Get Pivio-Apps: In this stage the job first retrieves a list of all artifacts listed in the Automated-EAD-Tool.
+2. Get Apps-List: During this stage the job gets a list of the artifacts that are hosted in the specified organization and space of the platform. This artifacts can be either running, stopped or crashed. Independently of the status of the service the platform API endpoint will return a complete list of the services.
+3. Get individual Runtime Info: Subsequently getting the list of all artifacts of the organization and space of the platform,
+this stage collects the individual runtime information. This stage iterates through the list of artifacts to retrieve the individual information of the them on the platform. The runtime information contains the attributes described in "Get Runtime Information".
+This is the most time consuming stage of the crawler job since the job has to retrieve the individual runtime information for each artifact.
+4. Push Documentation: Ultimately the retrieved information of the individual services is pushed to the Automated-EAD-Tool to update the information of the already documented artifact to ensure an uptodate documentation. The job is scheduled time-based. In the jenkins
+instance the crawler job is performed every 15 minutes.
 
 ## Installation
 
-If you dont want to run docker containers locally and do not have a Jira and CloudFoundry account, you can just download th VM and test the process. [Download link]()
-
-### Start Server
-1. Download [Pivio Server Repository](https://github.com/Nicocovi/pivio-server)
-2. Open the directory of the repository and build Server
- ```
- gradle build -x test
- ```
-3. Open Docker
-4. Navigate to the repository and start the containers
- ```
- docker-compose up
- ```
-5. Open docker-ip with the port of Jenkins (8008)
-6. Navigate to initialAdminPassword-file to setup Jenkins
- ```
- docker ps
- docker exec -t -i containername /bin/bash
- ```
-7. navigate to initialAdminPassword directory: /var/jenkins_home/secrets
- ```
- cat initialAdminPassword
- ```
- <!--
-8. Setup Jira: docker-ip:8099. This might take a while.
- -->
-### Start Pivio Web
-1. Download [Pivio Web Repository](https://github.com/Nicocovi/pivio-web)
-2. Open the directory of the repository and build pivio web
-```
-gradle build
-```
-3. Start web
-```
-java -jar build/libs/view.jar -f pivio-conf/server_config.yaml
-```
+Please follow the installation instructions of the server and webview component.
 
 ### Push initial data
 
@@ -150,17 +114,6 @@ java -jar build/libs/view.jar -f pivio-conf/server_config.yaml
    Dont forget to set the header to: application/json
 
 ### Cloud environment
-All 3 components are running in a cloud-based environment: [CloudFoundry]()
-* Pivio web is running [here](https://pivio-web.cfapps.io/)
-* Pivio server is running [here](https://pivio-server.cfapps.io/)
-* Elasticsearch is running [here](https://pivio-elastic.cfapps.io/)
-
-To enable Pivio to run in a cloud-environment the following configurations had to be done:
-
-TODO
-<!--
-### Configure Jenkins Job
-
-TODO
-
--->
+All components are running in a cloud-based environment: [CloudFoundry]()
+* The web is running [here](https://pivio-web.cfapps.io/)
+* The server is running [here](https://pivio-server.cfapps.io/)
