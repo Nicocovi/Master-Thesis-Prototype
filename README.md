@@ -20,7 +20,7 @@ Enterprise Architecture Management, automated Enterprise Architecture Documentat
 
 ## High level architecture:
 
-![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.PNG)
+
 
 * Repositories:
   * Tool server: [link](https://github.com/Nicocovi/pivio-server)
@@ -30,14 +30,12 @@ Enterprise Architecture Management, automated Enterprise Architecture Documentat
   * Microservice 2: [link](https://github.com/Nicocovi/Microservice2)
   * Architecture Belt: [link]()
 * Technologies (Docker container):
-  * ElasticSearch : [link](https://www.elastic.co/)
+  * MongoDB : [link]()
+  * NodeJS: [link]()
   * SpringBoot: [link](https://spring.io/projects/spring-boot)
   * Prometheus: [link](https://prometheus.io)
-  * Kibana: [link](https://www.elastic.co/products/kibana)
   * D3.js: [link](https://d3js.org/)
   * Thymeleaf: [link](https://www.thymeleaf.org/)
-  * Angular: [link]()
-  * Typescript: [link]()
 * Tools:
   * Jenkins: [link](https://jenkins.io/)
   * Iteraplan (EA Tool): [link](https://www.iteraplan.de/en/)
@@ -117,3 +115,17 @@ Please follow the installation instructions of the server and webview component.
 All components are running in a cloud-based environment: [CloudFoundry]()
 * The web is running [here](https://pivio-web.cfapps.io/)
 * The server is running [here](https://pivio-server.cfapps.io/)
+
+## Outlook
+
+![High level architecture](https://github.com/Nicocovi/Master-Thesis-Prototype/blob/master/imgs/highlevelarchitecture.PNG)
+
+During this work the PPM tool was integrated during the build and deployment pipeline to include the business domain information. An further extension would be to include a mapping of business processes and capabilities for an Business Impact Analysis of the applications.
+
+During the evaluation two new code related use cases were requested by the experts. The first use case was the automated verification of the cloud readiness of an application by verifying the 12 factor app criteria. The other use cases was an automated elasticity evaluation through a complete implementation of resilience pattern. To improve both automated verifications an integration a continuous inspection tool to perform automatic reviews with static code analysis would enhance both use cases. A possible tool for this could be Sonarqube. 
+
+Another requested extension of the prototype is to include an automated Data privacy compliance (GDPR compliance) analysis. Knowing what applications actually store information enables the opportunity to analyze the data that is stored.
+
+To prove that the approach and prototype can automate the EAD of enterprises, access rights to the whole cloud infrastructure needs to be guaranteed and the concept needs to be tested in several pilot projects.
+
+
